@@ -1,0 +1,60 @@
+terraform-aws-core-infra:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-core-infra
+  version: v5.0.0
+terraform-aws-core-infra--terraform-aws-s3:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-s3
+  version: v4.0.0
+terraform-aws-core-infra--terraform-aws-vpc-endpoint-interface:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-vpc-endpoint-interface
+  version: v2.0.0
+terraform-aws-jenkins:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-jenkins
+  version: v6.0.0
+terraform-aws-keycloak:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-keycloak
+  version: v4.0.0
+terraform-aws-lambda:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-lambda
+  version: v2.0.0
+terraform-aws-nomad:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-nomad
+  version: v7.1.0
+terraform-aws-project-config:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-project-config
+  version: master
+terraform-aws-project-data:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-project-data
+  version: master
+terraform-aws-s3:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-s3
+  version: v4.0.0
+terraform-aws-transit-attachment:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-transit-attachment
+  version: v4.0.0
+terraform-aws-transit-attachment--terraform-aws-project-data:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-project-data
+  version: master
+terraform-aws-transit-static-route:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-transit-static-route
+  version: v3.0.0
+terraform-aws-transit-static-route--terraform-aws-project-data:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-project-data
+  version: master
+terraform-aws-transit-subnet-route:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-transit-subnet-route
+  version: v2.0.0
+terraform-aws-transit-subnet-route--terraform-aws-project-data:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-aws-project-data
+  version: master
+terraform-ldap-project-config:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-ldap-project-config
+  version: v2.0.0
+terraform-nats-project-config:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-nats-project-config
+  version: v2.0.0
+terraform-vault-basic-project-setup:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-vault-basic-project-setup
+  version: v2.0.0
+terraform-vault-project-config:
+  source: https://git.ss.build.uc.internal/burbank-common/modules/terraform-vault-project-config
+  version: v2.0.0
