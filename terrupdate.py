@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-import yaml
 import os
-import urllib3
 import json
+import urllib3
+import yaml
 from yaml.loader import SafeLoader
 
 urllib3.disable_warnings()
@@ -33,7 +33,7 @@ for repo in terrafile:
     )
 
     tags = json.loads(r.data.decode('utf-8'))
-    if (version != tags[0]["name"] and version != 'master' and version != 'main'):
+    if version not in (tags[0]['name'], 'master', 'main'):
         print(version,tags[0]["name"])
         terrafile[repo]["version"] = tags[0]["name"]
 with open("Terrafile.new", "w") as f:
