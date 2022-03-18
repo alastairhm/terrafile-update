@@ -8,6 +8,10 @@ import urllib3
 import yaml
 from yaml.loader import SafeLoader
 
+def major_update(current, new):
+    """Check if major version bump."""
+    status = current.split('.')[0] != new.split('.')[0]
+    return status
 
 def main():
     """Update Terrafile to latest versions."""
@@ -25,10 +29,12 @@ def main():
     parser.add_argument("-v","--verbose", action='store_true',help="Verbose output")
     parser.add_argument("-c","--check", action='store_true',help="Just check no output")
     args = parser.parse_args()
+    if args.verbose: print("Arguements :",args)
 
     if os.path.isfile(args.input):
         terrafile = []
         dirty = False
+        major_changes = False
         with open(args.input, "r") as input_file:
             terrafile = list(yaml.load_all(input_file, Loader=SafeLoader))
             terrafile = terrafile[0]
@@ -54,10 +60,16 @@ def main():
 
             tags = json.loads(response.data.decode('utf-8'))
             if version not in (tags[0]['name'], 'master', 'main'):
-                if args.verbose:
-                    print(version,'-->',tags[0]["name"])
-                terrafile[repo]["version"] = tags[0]["name"]
-                dirty = True
+                major_bump = major_update(version,tags[0]["name"])
+                if not major_bump or args.major:
+                    if args.verbose:
+                       print(version,'-->',tags[0]["name"])
+                    terrafile[repo]["version"] = tags[0]["name"]
+                    dirty = True
+                else:
+                    major_changes = True
+        if major_changes and not args.major:
+            print('Warning : Major version changes detected and not actioned.')
         if dirty:
             if not args.check:
                 print('Writting new file...')
