@@ -67,7 +67,7 @@ def main():
             )
 
             tags = json.loads(response.data.decode('utf-8'))
-            if version not in (tags[0]['name'], 'master', 'main'):
+            if tags != [] and version not in (tags[0]['name'], 'master', 'main'):
                 major_bump = major_update(version,tags[0]["name"])
                 if not major_bump or args.major:
                     if args.verbose:
@@ -80,7 +80,7 @@ def main():
             print('Warning : Major version changes detected and not actioned.')
         if dirty:
             if not args.check:
-                print('Writting new file...')
+                print('Writing new file...')
                 with open(args.output, "w") as output_file:
                     output_file.write(yaml.dump(terrafile))
             else:
